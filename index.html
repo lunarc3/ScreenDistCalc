@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>屏幕墙 计算器 谢谢鱼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="header" class="brdone">
+        <div class="brdone">
+            <h1>屏幕墙 极限观看距离计算器</h1><small>made by 谢谢鱼</small></div>
+
+    </header>
+    <div id="wrapper">
+        <section id="primary" class="brdone">
+            <h2>原始数据</h2>
+            <p>-----单块屏幕：-----</p>
+            <p>分辨率：高：<input type="text" id="pingmugd" value="1080"></p>
+            <p>分辨率：宽：<input type="text" id="pingmukd" value="1920"></p>
+            <p>尺寸：（英寸）<input type="text" id="dscc" value="55"></p>
+            <p>-------------------</p>
+            <p>屏幕数量<input type="text" id="pingnum" value="48"></p>
+            <p>-----展示分辨率-----</p>
+            <p>p数：<input type="text" id="zhanps" value="1080"></p>
+            <p></p>
+
+            
+
+        </section>
+        <section id="secondary" class="brdone">
+            <h2>极限观看距离</h2>
+            <p><input type="button" id="btn" value="点击计算" /></p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p>极限距离:(米)</p>
+            <p class="blue">.</p>
+
+        
+
+        </section>
+        <footer class="brdone">数学算法参考自： http://www.bbc.co.uk/rd/pubs/whp/whp092.shtml </footer>
+    </div>
+    
+    <script>
+
+var oBtn = document.getElementById('btn');
+          oBtn.onclick = function(){
+        var dscc=  document.getElementById('dscc').value;
+        console.log(dscc);
+        var pingmugd =  document.getElementById('pingmugd').value;
+                console.log(pingmugd);
+        var pingmukd =  document.getElementById('pingmukd').value;
+                console.log(pingmukd);
+        var zhanps =  document.getElementById('zhanps').value;
+                console.log(zhanps);
+        var pingnum =  document.getElementById('pingnum').value;
+                console.log(pingnum);
+        
+var sqrtPM = Math.sqrt((pingmukd/pingmugd)*(pingmukd/pingmugd)+1);
+console.log(sqrtPM);
+
+var vdist = dscc / ( sqrtPM * zhanps * Math.tan(1/60 * 0.017453293));
+console.log(vdist);
+var mvdist = vdist * 0.0254 * Math.sqrt(pingnum);
+console.log(mvdist);
+var shuchu = document.querySelector('p.blue');
+        
+              shuchu.innerHTML= mvdist;;
+    };
+    </script>
+
+</body>
+
+</html>
